@@ -14,105 +14,105 @@
 <h3>Match Information</h3>
 <div>
 Match #<br>
-<input type="text" id="f_matchNumber">
+<input type="text" name="f_matchNumber">
 <br><br>
 Team #<br>
-<input type="text" id="f_teamNumber">
+<input type="text" name="f_teamNumber">
 </div>
 
 <h3>Autonomous</h3>
 <div>
 <p># of Yellow Totes in Auto Zone</p>
-<input type="radio" id="f_numAutoZone" value="0">0
-<input type="radio" id="f_numAutoZone" value="1">1
-<input type="radio" id="f_numAutoZone" value="2">2
-<input type="radio" id="f_numAutoZone" value="3">3
-<input type="radio" id="f_numAutoZone" value="4">4
+<input type="radio" name="f_numAutoZone" value="0">0
+<input type="radio" name="f_numAutoZone" value="1">1
+<input type="radio" name="f_numAutoZone" value="2">2
+<input type="radio" name="f_numAutoZone" value="3">3
+<input type="radio" name="f_numAutoZone" value="4">4
 
 <p># of Bins moved from Staging Area</p>
-<input type="radio" id="f_numStageBin" value="0">0
-<input type="radio" id="f_numStageBin" value="1">1
-<input type="radio" id="f_numStageBin" value="2">2
-<input type="radio" id="f_numStageBin" value="3">3
-<input type="radio" id="f_numStageBin" value="4">4
+<input type="radio" name="f_numStageBin" value="0">0
+<input type="radio" name="f_numStageBin" value="1">1
+<input type="radio" name="f_numStageBin" value="2">2
+<input type="radio" name="f_numStageBin" value="3">3
+<input type="radio" name="f_numStageBin" value="4">4
 
 <p># of Bins moved from Step</p>
-<input type="radio" id="f_numStepBin" value="0">0
-<input type="radio" id="f_numStepBin" value="1">1
-<input type="radio" id="f_numStepBin" value="2">2
-<input type="radio" id="f_numStepBin" value="3">3
-<input type="radio" id="f_numStepBin" value="4">4
+<input type="radio" name="f_numStepBin" value="0">0
+<input type="radio" name="f_numStepBin" value="1">1
+<input type="radio" name="f_numStepBin" value="2">2
+<input type="radio" name="f_numStepBin" value="3">3
+<input type="radio" name="f_numStepBin" value="4">4
 <br><br>
 
-<input type="checkbox" id="f_robotAuton">Robot Fully in Auto Zone
+<input type="checkbox" name="f_robotAuton">Robot Fully in Auto Zone
 <br>
-<input type="checkbox" id="f_toteAuton">Stacked Tote Set fully in Auto Zone
+<input type="checkbox" name="f_toteAuton">Stacked Tote Set fully in Auto Zone
 </div>
 
 <h3>Teleop - Coopertition</h3>
 <div>
 <p># of Totes placed on Step</p>
-<input type="radio" id="f_numOnStep" value="0">0
-<input type="radio" id="f_numOnStep" value="1">1
-<input type="radio" id="f_numOnStep" value="2">2
-<input type="radio" id="f_numOnStep" value="3">3
+<input type="radio" name="f_numOnStep" value="0">0
+<input type="radio" name="f_numOnStep" value="1">1
+<input type="radio" name="f_numOnStep" value="2">2
+<input type="radio" name="f_numOnStep" value="3">3
 
 <p>Stacked on top of how many Totes</p>
-<input type="radio" id="f_numOnTop" value="0">0
-<input type="radio" id="f_numOnTop" value="1">1
-<input type="radio" id="f_numOnTop" value="2">2
-<input type="radio" id="f_numOnTop" value="3">3
+<input type="radio" name="f_numOnTop" value="0">0
+<input type="radio" name="f_numOnTop" value="1">1
+<input type="radio" name="f_numOnTop" value="2">2
+<input type="radio" name="f_numOnTop" value="3">3
 </div>
 
 <h3>Teleop - Stacked Grey Tote Sets</h3>
 <div>
 <table>
 <tr><td></td><td>1st</td><td>2nd</td><td>3rd</td><td>4th</td><td>5th</td></tr>
-<tr><td>Litter</td><td><input type="checkbox" id="f_1_litter"></td><td><input type="checkbox" id="f_2_litter"></td><td><input type="checkbox" id="f_3_litter"></td><td><input type="checkbox" id="f_4_litter"></td><td><input type="checkbox" id="f_5_litter"></td></tr>
-<tr><td>Can</td><td><input type="checkbox" id="f_1_can"></td><td><input type="checkbox" id="f_2_can"></td><td><input type="checkbox" id="f_3_can"></td><td><input type="checkbox" id="f_4_can"></td><td><input type="checkbox" id="f_5_can"></td></tr>
-<tr><td>6</td><td><input type="radio" id="f_1_ntotes" value="6"></td><td><input type="radio" id="f_2_ntotes" value="6"></td><td><input type="radio" id="f_3_ntotes" value="6"></td><td><input type="radio" id="f_4_ntotes" value="6"></td><td><input type="radio" id="f_5_ntotes" value="6"></td></tr>
-<tr><td>5</td><td><input type="radio" id="f_1_ntotes" value="5"></td><td><input type="radio" id="f_2_ntotes" value="5"></td><td><input type="radio" id="f_3_ntotes" value="5"></td><td><input type="radio" id="f_4_ntotes" value="5"></td><td><input type="radio" id="f_5_ntotes" value="5"></td></tr>
-<tr><td>4</td><td><input type="radio" id="f_1_ntotes" value="4"></td><td><input type="radio" id="f_2_ntotes" value="4"></td><td><input type="radio" id="f_3_ntotes" value="4"></td><td><input type="radio" id="f_4_ntotes" value="4"></td><td><input type="radio" id="f_5_ntotes" value="4"></td></tr>
-<tr><td>3</td><td><input type="radio" id="f_1_ntotes" value="3"></td><td><input type="radio" id="f_2_ntotes" value="3"></td><td><input type="radio" id="f_3_ntotes" value="3"></td><td><input type="radio" id="f_4_ntotes" value="3"></td><td><input type="radio" id="f_5_ntotes" value="3"></td></tr>
-<tr><td>2</td><td><input type="radio" id="f_1_ntotes" value="2"></td><td><input type="radio" id="f_2_ntotes" value="2"></td><td><input type="radio" id="f_3_ntotes" value="2"></td><td><input type="radio" id="f_4_ntotes" value="2"></td><td><input type="radio" id="f_5_ntotes" value="2"></td></tr>
-<tr><td>1</td><td><input type="radio" id="f_1_ntotes" value="1"></td><td><input type="radio" id="f_2_ntotes" value="1"></td><td><input type="radio" id="f_3_ntotes" value="1"></td><td><input type="radio" id="f_4_ntotes" value="1"></td><td><input type="radio" id="f_5_ntotes" value="1"></td></tr>
-<tr><td>0</td><td><input type="radio" id="f_1_ntotes" value="0"></td><td><input type="radio" id="f_2_ntotes" value="0"></td><td><input type="radio" id="f_3_ntotes" value="0"></td><td><input type="radio" id="f_4_ntotes" value="0"></td><td><input type="radio" id="f_5_ntotes" value="0"></td></tr>
+<tr><td>Litter</td><td><input type="checkbox" name="f_1_litter"></td><td><input type="checkbox" name="f_2_litter"></td><td><input type="checkbox" name="f_3_litter"></td><td><input type="checkbox" name="f_4_litter"></td><td><input type="checkbox" name="f_5_litter"></td></tr>
+<tr><td>Can</td><td><input type="checkbox" name="f_1_can"></td><td><input type="checkbox" name="f_2_can"></td><td><input type="checkbox" name="f_3_can"></td><td><input type="checkbox" name="f_4_can"></td><td><input type="checkbox" name="f_5_can"></td></tr>
+<tr><td>6</td><td><input type="radio" name="f_1_ntotes" value="6"></td><td><input type="radio" name="f_2_ntotes" value="6"></td><td><input type="radio" name="f_3_ntotes" value="6"></td><td><input type="radio" name="f_4_ntotes" value="6"></td><td><input type="radio" name="f_5_ntotes" value="6"></td></tr>
+<tr><td>5</td><td><input type="radio" name="f_1_ntotes" value="5"></td><td><input type="radio" name="f_2_ntotes" value="5"></td><td><input type="radio" name="f_3_ntotes" value="5"></td><td><input type="radio" name="f_4_ntotes" value="5"></td><td><input type="radio" name="f_5_ntotes" value="5"></td></tr>
+<tr><td>4</td><td><input type="radio" name="f_1_ntotes" value="4"></td><td><input type="radio" name="f_2_ntotes" value="4"></td><td><input type="radio" name="f_3_ntotes" value="4"></td><td><input type="radio" name="f_4_ntotes" value="4"></td><td><input type="radio" name="f_5_ntotes" value="4"></td></tr>
+<tr><td>3</td><td><input type="radio" name="f_1_ntotes" value="3"></td><td><input type="radio" name="f_2_ntotes" value="3"></td><td><input type="radio" name="f_3_ntotes" value="3"></td><td><input type="radio" name="f_4_ntotes" value="3"></td><td><input type="radio" name="f_5_ntotes" value="3"></td></tr>
+<tr><td>2</td><td><input type="radio" name="f_1_ntotes" value="2"></td><td><input type="radio" name="f_2_ntotes" value="2"></td><td><input type="radio" name="f_3_ntotes" value="2"></td><td><input type="radio" name="f_4_ntotes" value="2"></td><td><input type="radio" name="f_5_ntotes" value="2"></td></tr>
+<tr><td>1</td><td><input type="radio" name="f_1_ntotes" value="1"></td><td><input type="radio" name="f_2_ntotes" value="1"></td><td><input type="radio" name="f_3_ntotes" value="1"></td><td><input type="radio" name="f_4_ntotes" value="1"></td><td><input type="radio" name="f_5_ntotes" value="1"></td></tr>
+<tr><td>0</td><td><input type="radio" name="f_1_ntotes" value="0"></td><td><input type="radio" name="f_2_ntotes" value="0"></td><td><input type="radio" name="f_3_ntotes" value="0"></td><td><input type="radio" name="f_4_ntotes" value="0"></td><td><input type="radio" name="f_5_ntotes" value="0"></td></tr>
 </table>
 </div>
 
 <h3>Teleop - Miscellaneous</h3>
 <div>
 <p># of Fouls</p>
-<input type="radio" id="f_fouls" value="1">0
-<input type="radio" id="f_fouls" value="1">1
-<input type="radio" id="f_fouls" value="2">2
-<input type="radio" id="f_fouls" value="3">3
-<input type="radio" id="f_fouls" value="4">4 
+<input type="radio" name="f_fouls" value="0">0
+<input type="radio" name="f_fouls" value="1">1
+<input type="radio" name="f_fouls" value="2">2
+<input type="radio" name="f_fouls" value="3">3
+<input type="radio" name="f_fouls" value="4">4 
 
 <p># of Stacks tipped over</p>
-<input type="radio" id="f_stacks" value="1">0
-<input type="radio" id="f_stacks" value="1">1
-<input type="radio" id="f_stacks" value="2">2
-<input type="radio" id="f_stacks" value="3">3
-<input type="radio" id="f_stacks" value="4">4 
+<input type="radio" name="f_stacks" value="0">0
+<input type="radio" name="f_stacks" value="1">1
+<input type="radio" name="f_stacks" value="2">2
+<input type="radio" name="f_stacks" value="3">3
+<input type="radio" name="f_stacks" value="4">4 
 <br><br>
 
-<input type="checkbox" id="f_dead">Dead/Disabled
+<input type="checkbox" name="f_dead">Dead/Disabled
 <br>
-<input type="checkbox" id="f_tipped">Robot tipped over
+<input type="checkbox" name="f_tipped">Robot tipped over
 <br>
-<input type="checkbox" id="f_tippedOtherRobot">Tipped other robot over
+<input type="checkbox" name="f_tippedOtherRobot">Tipped other robot over
 <br><br>
-<input type="radio" id="f_morePlayerStation" value="true">Collected more from Human Player Station
+<input type="radio" name="f_morePlayerStation" value="true">Collected more from Human Player Station
 <br>
-<input type="radio" id="f_morePlayerStation" value="false">Collected more from Landfill
+<input type="radio" name="f_morePlayerStation" value="false">Collected more from Landfill
 </div>
 
 <p>Notes</p>
-<textarea id="f_notes" rows="4" cols="50"></textarea>
+<textarea name="f_notes" rows="4" cols="50"></textarea>
 <br> 
 <p>Scouted By</p>
-<input type="text" id="f_scoutName">
+<input type="text" name="f_scoutName">
 
 <br>
 

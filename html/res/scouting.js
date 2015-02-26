@@ -3,55 +3,71 @@ var fieldNames = {'f_matchNumber':'', 'f_teamNumber':'', 'f_numAutoZone':'0', 'f
 function marshalData() {
     var map = {};
 
+    map['timestamp'] = Date.now();
     for(var key in fieldNames) {
         if(fieldNames.hasOwnProperty(key)) {
-            map[key] = document.getElementById(key).value;
+
+            if(document.getElementsByName(key)[0].type == 'text'
+                || document.getElementsByName(key)[0].type == 'textarea') {
+                map[key] = document.getElementsByName(key)[0].value;
+            } else if (document.getElementsByName(key)[0].type == 'checkbox') {
+                map[key] = document.getElementsByName(key)[0].checked;
+            } else if(document.getElementsByName(key)[0].type == 'radio') {
+                elms = document.getElementsByName(key);
+                for(i = 0; i < elms.length; i++) {
+                    if(elms[i].checked) {
+                        map[key] = elms[i].value;
+                    }
+                }
+            }
         }
     }
 
-    map['timestamp'] = Date.now();
-    /* map['f_matchNumber'] = document.getElementById('f_matchNumber').value;
-    map['f_teamNumber'] = document.getElementById('f_teamNumber').value;
-    map['f_numAutoZone'] = document.getElementById('f_numAutoZone').value;
-    map['f_numStageBin'] = document.getElementById('f_numStageBin').value;
-    map['f_numStepBin'] = document.getElementById('f_numStepBin').value;
-    map['f_robotAuton'] = document.getElementById('f_robotAuton').value;
-    map['f_toteAuton'] = document.getElementById('f_toteAuton').value;
-    map['f_numOnStep'] = document.getElementById('f_numOnStep').value;
-    map['f_numOnTop'] = document.getElementById('f_numOnTop').value; */
     for(i = 1; i < 6; i++) {
-        map['f_' + i + '_litter'] = document.getElementById('f_' + i + '_litter').value;
-        map['f_' + i + '_can'] = document.getElementById('f_' + i + '_can').value;
-        map['f_' + i + '_ntotes'] = document.getElementById('f_' + i + '_ntotes').value;
+        map['f_' + i + '_litter'] = document.getElementsByName('f_' + i + '_litter')[0].checked;
+        map['f_' + i + '_can'] = document.getElementsByName('f_' + i + '_can')[0].checked;
+
+        elms = document.getElementsByName('f_' + i + '_ntotes');
+        for(n = 0; n < elms.length; n++) {
+            if(elms[n].checked) {
+                map['f_' + i + '_ntotes'] = elms[n].value;
+            }
+        }
     }
-    /* map['f_fouls'] = document.getElementById('f_fouls').value;
-    map['f_stacks'] = document.getElementById('f_stacks').value;
-    map['f_dead'] = document.getElementById('f_dead').value;
-    map['f_tipped'] = document.getElementById('f_tipped').value;
-    map['f_tippedOtherRobot'] = document.getElementById('f_tippedOtherRobot').value;
-    map['f_morePlayerStation'] = document.getElementById('f_morePlayerStation').value;
-    map['f_notes'] = document.getElementById('f_notes').value; */
-    map['f_scoutName'] = document.getElementById('f_scoutName').value;
+
+    map['f_scoutName'] = document.getElementsByName('f_scoutName')[0].value;
     return map;
 }
 
 function clearFields() {
     for(var key in fieldNames) {
         if(fieldNames.hasOwnProperty(key)) {
-            if(document.getElementById(key).type == 'text'
-                || document.getElementById(key).type == 'textarea') {
-                document.getElementById(key).value = fieldNames[key];
-            } else if (document.getElementById(key).type == 'checkbox'
-                || document.getElementById(key).type == 'radio') {
-                document.getElementById(key).checked = fieldNames[key];
+            if(document.getElementsByName(key)[0].type == 'text'
+                || document.getElementsByName(key)[0].type == 'textarea') {
+                document.getElementsByName(key)[0].value = fieldNames[key];
+            } else if (document.getElementsByName(key)[0].type == 'checkbox') {
+                document.getElementsByName(key)[0].checked = fieldNames[key];
+            } else if (document.getElementsByName(key)[0].type == 'radio') {
+                elms = document.getElementsByName(key);
+                for(i = 0; i < elms.length; i++) {
+                    if(fieldNames[key] == elms[i].value) {
+                        elms[i].checked = true;
+                    }
+                }
             }
         }
     }
 
     for(i = 1; i < 6; i++) {
-        document.getElementById('f_' + i + '_litter').checked = '';
-        document.getElementById('f_' + i + '_can').checked = '';
-        document.getElementById('f_' + i + '_ntotes').value = '0';
+        document.getElementsByName('f_' + i + '_litter')[0].checked = '';
+        document.getElementsByName('f_' + i + '_can')[0].checked = '';
+
+        elms = document.getElementsByName('f_' + i + '_ntotes');
+        for(n = 0; n < elms.length; n++) {
+            if(elms[n].value == '0') {
+                elms[n].checked = true;
+            }
+        }
     }
 }
 
