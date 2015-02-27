@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html manifest="/res/appcache.manifest">
 <head>
-<title>FIRST Team 3512 Scouting Form</title>
+<title>FRC 3512 Spartatroniks Scouting Form</title>
 <script src="res/scouting.js" type="text/javascript"></script>
 </head>
 <body onload="onLoad()">
@@ -119,11 +119,11 @@ Team #<br>
 <!-- -->
 
 <br>
-<input type="submit" value="Store data" onClick="return procForm(this.form);">
-<input type="submit" value="Clear fields" onClick="return clearFields();">
+<input type="submit" value="Store data" onClick="procForm(this.form); window.scrollTo(0, 0);">
+<input type="submit" value="Clear fields" onClick="clearFields();">
 <br>
 <br>
-<div>Process data</div>
+<h3>Process data</h3>
 <input type="submit" value="Show data (debug)" onClick="displayJSON();">
 <br>
 <input type="submit" value="Clear (local) data" onClick="resetLocalStorage(); document.getElementById('statusText').innerHTML = 'Cleared local storage';">

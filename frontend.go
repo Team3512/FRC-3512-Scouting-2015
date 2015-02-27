@@ -2,15 +2,15 @@ package main;
 
 import "dispatcher"
 import "net/http"
-/* import _ "github.com/mattn/go-sqlite3"
-import "database/sql" */
+import _ "github.com/mattn/go-sqlite3"
+import "database/sql"
 import "log"
 /* import "time" */
 import "fmt"
 import "bytes"
 
 type ReceiveMessageHandle struct {
-  //database *sql.DB;
+  database *sql.DB;
 };
 
 func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
@@ -37,11 +37,11 @@ func main() {
   var d *dispatcher.Dispatcher;
 
   /* Initialize the database */
-  /* db, err := sql.Open("sqlite3", "/var/smsmessages/smsmessages.db");
+  db, err := sql.Open("sqlite3", "scouting.db");
   if(err != nil) {
     log.Fatal(err);
   }
-  defer db.Close(); */
+  defer db.Close();
 
   msgHandle := new(ReceiveMessageHandle);
   /* msgHandle.database = db; */
