@@ -2,8 +2,8 @@ package main;
 
 import "dispatcher"
 import "net/http"
-import _ "github.com/mattn/go-sqlite3"
-import "database/sql"
+//import _ "github.com/mattn/go-sqlite3"
+//import "database/sql"
 import "log"
 /* import "time" */
 import "fmt"
@@ -15,7 +15,7 @@ import "os"
 import "encoding/csv"
 
 type ReceiveMessageHandle struct {
-  database *sql.DB;
+  //database *sql.DB;
 };
 
 func valueToString(in interface{}) string {
@@ -134,14 +134,14 @@ func main() {
   var d *dispatcher.Dispatcher;
 
   /* Initialize the database */
-  db, err := sql.Open("sqlite3", "scouting.db");
-  if(err != nil) {
-    log.Fatal(err);
-  }
-  defer db.Close();
+  //db, err := sql.Open("sqlite3", "scouting.db");
+  //if(err != nil) {
+  //  log.Fatal(err);
+  //}
+  //defer db.Close();
 
   msgHandle := new(ReceiveMessageHandle);
-  msgHandle.database = db;
+  //msgHandle.database = db;
 
   /* Initialize the HTTP server */
   d = dispatcher.NewDispatcher();
