@@ -102,7 +102,7 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
   wr.WriteHeader(200);
   wr.Header().Add("Content-Type", "text/html");
 
-  file, err := os.OpenFile("scouting.csv", os.O_RDWR | os.O_APPEND, 0660);
+  file, err := os.OpenFile("output.csv", os.O_RDWR | os.O_APPEND, 0660);
   if(err != nil) {
     fmt.Fprintln(wr, "Failed");
     return;
@@ -126,6 +126,10 @@ func formHandle(wr http.ResponseWriter, req *http.Request) {
     http.ServeFile(wr, req, "html/scouting-form.html");
 }
 
+func csvHandle(wr http.ResponseWriter, req *http.Request) {
+    http.ServeFile(wr, req, "output.csv");
+}
+
 func main() {
   var d *dispatcher.Dispatcher;
 
@@ -143,6 +147,7 @@ func main() {
   d = dispatcher.NewDispatcher();
   //d.RegisterExpr("^/$", http.HandlerFunc(mainHandle));
   d.RegisterExpr("^/form$", http.HandlerFunc(formHandle));
+  d.RegisterExpr("^/output.csv$", http.HandlerFunc(csvHandle));
   d.RegisterExpr("^/write", http.StripPrefix("/", msgHandle));
   d.RegisterExpr("^/res", http.StripPrefix("/res/", http.FileServer(http.Dir("html/res/"))));
 
