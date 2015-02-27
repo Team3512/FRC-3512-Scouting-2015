@@ -8,10 +8,90 @@ import "log"
 /* import "time" */
 import "fmt"
 import "bytes"
+import "encoding/json"
+import "strconv"
+import "io"
+import "os"
+import "encoding/csv"
 
 type ReceiveMessageHandle struct {
   database *sql.DB;
 };
+
+func valueToString(in interface{}) string {
+            switch t := in.(type) {
+            default:
+                return "nil";
+            case string:
+                return t;
+            case int:
+                return strconv.FormatInt(int64(t), 10);
+            case int64:
+                return strconv.FormatInt(t, 10);
+            case float64:
+                return strconv.FormatFloat(t, 'f', 6, 64);
+            case bool:
+                if t == true {
+                    return "true";
+                }else{
+                    return "false";
+                }
+            }
+}
+
+func decodeData(jsontext string) (out []map[string]string, ok bool){
+    var strarr []interface{};
+    outmap := make(map[string]string);
+
+    err := json.Unmarshal(bytes.NewBufferString(jsontext).Bytes(), &strarr);
+    if err != nil {
+		fmt.Println("error:", err)
+        return nil, false;
+	}
+
+    if(strarr[0] == "magic v0.1") {
+        //var record []string;
+
+
+        for i := 1; i < len(strarr); i++ {
+            m, isok := strarr[i].(map[string]interface{});
+            if(!isok) {
+                // All of these should work
+                return nil, false;
+            }
+
+            for key, value := range m {
+                //fmt.Println(key + ", " + valueToString(value));
+                outmap[key] = valueToString(value);
+            }
+            out = append(out, outmap);
+        }
+
+    }
+
+    return out, true;
+}
+
+func writeCsvRecords(wr io.Writer, columns []string, records []map[string]string) {
+    csvwrite := csv.NewWriter(wr);
+
+    // Loop over the records
+    for _, record := range records {
+        // Find the keys we're using
+        outslice := make([]string, len(columns));
+        for i, keyname := range columns {
+            col, ok := record[keyname];
+            if(ok) {
+                outslice[i] = col;
+            } else {
+                outslice[i] = "nil";
+            }
+        }
+        csvwrite.Write(outslice);
+    }
+
+    csvwrite.Flush();
+}
 
 func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
   /* message = req.FormValue("message");
@@ -19,14 +99,27 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
   to = req.FormValue("to");
   timestamp = time.Now(); */
 
+  wr.WriteHeader(200);
+  wr.Header().Add("Content-Type", "text/html");
+
+  file, err := os.OpenFile("scouting.csv", os.O_RDWR | os.O_APPEND, 0660);
+  if(err != nil) {
+    fmt.Fprintln(wr, "Failed");
+    return;
+  }
+  defer file.Close();
+
   buf := new(bytes.Buffer);
   buf.ReadFrom(req.Body);
   s := buf.String();
-  fmt.Println(s);
+  records, ok := decodeData(s);
+  if(ok) {
+    writeCsvRecords(file, []string{"timestamp", "f_teamNumber"}, records);
+    fmt.Fprintln(wr, "OK");
+    return;
+  }
 
-  wr.WriteHeader(200);
-  wr.Header().Add("Content-Type", "text/html");
-  fmt.Fprintln(wr, "OK");
+  fmt.Fprintln(wr, "Failed");
 }
 
 func formHandle(wr http.ResponseWriter, req *http.Request) {
@@ -44,7 +137,7 @@ func main() {
   defer db.Close();
 
   msgHandle := new(ReceiveMessageHandle);
-  /* msgHandle.database = db; */
+  msgHandle.database = db;
 
   /* Initialize the HTTP server */
   d = dispatcher.NewDispatcher();
