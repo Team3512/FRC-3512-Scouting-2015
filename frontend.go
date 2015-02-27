@@ -104,6 +104,7 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
 
   file, err := os.OpenFile("output.csv", os.O_RDWR | os.O_APPEND, 0660);
   if(err != nil) {
+    fmt.Println(err);
     fmt.Fprintln(wr, "Failed");
     return;
   }
