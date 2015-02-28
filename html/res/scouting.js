@@ -52,7 +52,7 @@ function uiResetLocalStorage() {
 }
 
 function uiClearFields() {
-    var clearConfirm = confirm("Are you sure you want to clear the form");
+    var clearConfirm = confirm("Are you sure you want to clear the form?");
     if(clearConfirm == true) {
         clearFields();
     }
