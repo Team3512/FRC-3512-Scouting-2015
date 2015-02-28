@@ -82,8 +82,7 @@ function clearFields() {
     }
 }
 
-function procForm() {
-    var arr;
+function getLocalStorageArr() {
     try {
         arr = JSON.parse(localStorage.getItem("scoutingData3512"));
     }catch(e){
@@ -97,6 +96,13 @@ function procForm() {
         arr = ["magic v0.1"];
     }
 
+    return arr;
+}
+
+function procForm() {
+    var arr;
+    arr = getLocalStorageArr();
+
     data = marshalData();
     arr.push(data);
     localStorage.setItem("scoutingData3512", JSON.stringify(arr));
@@ -107,6 +113,11 @@ function procForm() {
 
 function resetLocalStorage() {
     localStorage.setItem("scoutingData3512", "");
+}
+
+function uiSendData() {
+    submitData(JSON.stringify(getLocalStorageArr()));
+    window.scrollTo(0, 0);
 }
 
 function submitData(str) {
