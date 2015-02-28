@@ -4,6 +4,10 @@
     -moz-column-width: 16em;
 }
 
+td {
+    padding: 2px 2px;
+}
+
 .atomic {
     column-break-inside: avoid;
     -webkit-column-break-inside: avoid;
