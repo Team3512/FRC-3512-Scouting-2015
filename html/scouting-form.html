@@ -126,7 +126,7 @@ Team #<br>
 <h3>Process data</h3>
 <input type="submit" value="Show data (debug)" onClick="displayJSON();">
 <br>
-<input type="submit" value="Clear (local) data" onClick="resetLocalStorage(); document.getElementById('statusText').innerHTML = 'Cleared local storage';">
+<input type="submit" value="Clear (local) data" onClick="uiResetLocalStorage();">
 <br>
 <input type="submit" value="Send data to remote host" onClick="submitData(localStorage.getItem('scoutingData3512')); window.scrollTo(0, 0);">
 <br>

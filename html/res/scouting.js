@@ -39,6 +39,17 @@ function marshalData() {
     return map;
 }
 
+function uiResetLocalStorage() {
+    var confirmDelete = prompt('Are you sure? If you\'re absolutely sure you know what you\'re doing, enter "DELETE" below to clear the stored data.', '');
+    if(confirmDelete == 'DELETE') {
+        resetLocalStorage();
+        document.getElementById('statusText').innerHTML = 'Cleared local storage';
+    } else {
+        document.getElementById('statusText').innerHTML = 'Clearing local storage cancelled';
+    }
+    window.scrollTo(0, 0);
+}
+
 function clearFields() {
     for(var key in fieldNames) {
         if(fieldNames.hasOwnProperty(key)) {
