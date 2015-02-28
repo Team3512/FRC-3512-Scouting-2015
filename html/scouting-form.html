@@ -15,10 +15,10 @@
 <h3>Match Information</h3>
 <div>
 Match #<br>
-<input type="text" name="f_matchNumber">
+<input type="text" name="f_matchNumber" inputmode="numeric">
 <br><br>
 Team #<br>
-<input type="text" name="f_teamNumber">
+<input type="text" name="f_teamNumber" inputmode="numeric">
 </div>
 
 <h3>Autonomous</h3>
@@ -121,7 +121,7 @@ Team #<br>
 
 <br>
 <input type="submit" value="Store data" onClick="procForm(this.form); window.scrollTo(0, 0);">
-<input type="submit" value="Clear fields" onClick="clearFields();">
+<input type="submit" value="Clear fields" onClick="uiClearFields();">
 <br>
 <br>
 <h3>Process data</h3>

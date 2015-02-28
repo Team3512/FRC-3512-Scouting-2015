@@ -50,6 +50,13 @@ function uiResetLocalStorage() {
     window.scrollTo(0, 0);
 }
 
+function uiClearFields() {
+    var clearConfirm = confirm("Are you sure you want to clear the form");
+    if(clearConfirm == true) {
+        clearFields();
+    }
+}
+
 function clearFields() {
     for(var key in fieldNames) {
         if(fieldNames.hasOwnProperty(key)) {
