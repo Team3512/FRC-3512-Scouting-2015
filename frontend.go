@@ -17,6 +17,7 @@ import "encoding/csv"
 type ReceiveMessageHandle struct {
   //database *sql.DB;
   columns []string;
+  file *os.File;
 };
 
 func valueToString(in interface{}) string {
@@ -73,7 +74,7 @@ func decodeData(jsontext string) (out []map[string]string, ok bool){
     return out, true;
 }
 
-func writeCsvRecords(wr io.Writer, columns []string, records []map[string]string) {
+func writeCsvRecords(wr io.Writer, columns []string, records []map[string]string) (ok bool) {
     csvwrite := csv.NewWriter(wr);
 
     // Loop over the records
@@ -92,6 +93,11 @@ func writeCsvRecords(wr io.Writer, columns []string, records []map[string]string
     }
 
     csvwrite.Flush();
+
+    if(csvwrite.Error() != nil) {
+        return false;
+    }
+    return true;
 }
 
 func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
@@ -103,23 +109,24 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
   wr.WriteHeader(200);
   wr.Header().Add("Content-Type", "text/html");
 
-  file, err := os.OpenFile("output.csv", os.O_RDWR | os.O_APPEND, 0660);
-  if(err != nil) {
-    fmt.Println(err);
-    fmt.Fprintln(wr, "Failed");
-    return;
-  }
-  defer file.Close();
-
   buf := new(bytes.Buffer);
   buf.ReadFrom(req.Body);
   s := buf.String();
+
   records, ok := decodeData(s);
-  if(ok) {
-    writeCsvRecords(file, wh.columns, records);
-    fmt.Fprintln(wr, "OK");
+  if(!ok) {
+    fmt.Fprintln(wr, "Failed");
     return;
   }
+
+  ok = writeCsvRecords(wh.file, wh.columns, records);
+  if(!ok) {
+      fmt.Fprintln(wr, "Failed");
+      return;
+  }
+
+  fmt.Fprintln(wr, "OK");
+  return;
 
   fmt.Fprintln(wr, "Failed");
 }
@@ -142,16 +149,40 @@ func main() {
   //}
   //defer db.Close();
 
-  columns := []string{"timestamp", "f_matchNumber", "f_teamNumber", "f_numAutoZone", "f_numStageBin", "f_numStepBin", "f_robotAuton", "f_toteAuton", "f_numOnStep", "f_numOnTop", "f_fouls", "f_stacks", "f_dead", "f_tipped", "f_tippedOtherRobot", "f_morePlayerStation", "f_notes"}
+  // Open the file
+  file, err := os.OpenFile("output.csv", os.O_RDWR | os.O_APPEND, 0660);
+  if(err != nil) {
+    fmt.Println(err);
+    return;
+  }
+  defer file.Close();
+
+  // Write the list of columns to the CSV file
+  /* columns := []string{"timestamp", "f_matchNumber", "f_teamNumber", "f_numAutoZone", "f_numStageBin", "f_numStepBin", "f_robotAuton", "f_toteAuton", "f_numOnStep", "f_numOnTop", "f_fouls", "f_stacks", "f_dead", "f_tipped", "f_tippedOtherRobot", "f_morePlayerStation", "f_notes"}
 
   for i := 1; i < 5; i++ {
     columns = append(columns, "f_" + strconv.Itoa(i) + "_litter");
     columns = append(columns, "f_" + strconv.Itoa(i) + "_can");
     columns = append(columns, "f_" + strconv.Itoa(i) + "_ntotes");
   }
+  writer := csv.NewWriter(file);
+  writer.Write(columns);
+  writer.Flush(); */
+
+  // Create our list of columns from the first line of the CSV file
+  reader := csv.NewReader(file);
+  columns, err := reader.Read();
+  if(err != nil) {
+      fmt.Println(err);
+      return;
+  }
+
+  // Seek to the end so we can begin writing
+  file.Seek(0, 2);
 
   msgHandle := new(ReceiveMessageHandle);
   msgHandle.columns = columns;
+  msgHandle.file = file;
   //msgHandle.database = db;
 
   /* Initialize the HTTP server */
