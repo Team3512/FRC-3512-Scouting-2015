@@ -1,7 +1,7 @@
 #columnContainer {
-    column-width: 16em;
-    -webkit-column-width: 16em;
-    -moz-column-width: 16em;
+    column-width: 20em;
+    -webkit-column-width: 20em;
+    -moz-column-width: 20em;
 }
 
 #statusText {

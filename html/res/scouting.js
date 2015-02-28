@@ -8,6 +8,7 @@ function marshalData() {
         if(fieldNames.hasOwnProperty(key)) {
 
             if(document.getElementsByName(key)[0].type == 'text'
+                || document.getElementsByName(key)[0].type == 'number'
                 || document.getElementsByName(key)[0].type == 'textarea') {
                 map[key] = document.getElementsByName(key)[0].value;
             } else if (document.getElementsByName(key)[0].type == 'checkbox') {
@@ -61,6 +62,7 @@ function clearFields() {
     for(var key in fieldNames) {
         if(fieldNames.hasOwnProperty(key)) {
             if(document.getElementsByName(key)[0].type == 'text'
+                || document.getElementsByName(key)[0].type == 'number'
                 || document.getElementsByName(key)[0].type == 'textarea') {
                 document.getElementsByName(key)[0].value = fieldNames[key];
             } else if (document.getElementsByName(key)[0].type == 'checkbox') {
