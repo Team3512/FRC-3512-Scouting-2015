@@ -12,3 +12,7 @@
     break-inside: avoid;
 }
 
+.formblock {
+    margin: 1em 0;
+}
+
