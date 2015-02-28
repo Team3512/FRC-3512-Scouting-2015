@@ -18,6 +18,7 @@
 <div id="columnContainer">
 
 <div class="atomic">
+<fieldset>
 <h3>Match Information</h3>
 <div class="formblock">
 <div>Match #</div>
@@ -27,9 +28,11 @@
 <div>Team #</div>
 <input type="number" name="f_teamNumber">
 </div>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Autonomous</h3>
 <div class="formblock">
 <div># of Yellow Totes in Auto Zone</div>
@@ -62,9 +65,11 @@
 <div><input type="checkbox" name="f_robotAuton">Robot Fully in Auto Zone</div>
 <div><input type="checkbox" name="f_toteAuton">Stacked Tote Set</div>
 </div>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Teleop - Coopertition</h3>
 <div class="formblock">
 <div># of Totes placed on Step</div>
@@ -81,9 +86,11 @@
 <input type="radio" name="f_numOnTop" value="2">2
 <input type="radio" name="f_numOnTop" value="3">3
 </div>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Teleop - Stacked Grey Tote Sets</h3>
 <table>
 <tr><td></td><td>1<sup>st</sup></td><td>2<sup>nd</sup></td><td>3<sup>rd</sup></td><td>4<sup>th</sup></td><td>5<sup>th</sup></td></tr>
@@ -97,9 +104,11 @@
 <tr><td>1</td><td><input type="radio" name="f_1_ntotes" value="1"></td><td><input type="radio" name="f_2_ntotes" value="1"></td><td><input type="radio" name="f_3_ntotes" value="1"></td><td><input type="radio" name="f_4_ntotes" value="1"></td><td><input type="radio" name="f_5_ntotes" value="1"></td></tr>
 <tr><td>0</td><td><input type="radio" name="f_1_ntotes" value="0"></td><td><input type="radio" name="f_2_ntotes" value="0"></td><td><input type="radio" name="f_3_ntotes" value="0"></td><td><input type="radio" name="f_4_ntotes" value="0"></td><td><input type="radio" name="f_5_ntotes" value="0"></td></tr>
 </table>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Teleop - Miscellaneous</h3>
 <div class="formblock">
 <div># of Fouls</div>
@@ -130,9 +139,11 @@
 <div><input type="radio" name="f_morePlayerStation" value="true">Human Player Station</div>
 <div><input type="radio" name="f_morePlayerStation" value="false">Landfill</div>
 </div>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Other</h3>
 <div class="formblock">
 <div>Notes</div>
@@ -142,9 +153,11 @@
 <div>Scouted By</div>
 <input type="text" name="f_scoutName">
 </div>
+</fieldset>
 </div>
 
 <div class="atomic">
+<fieldset>
 <h3>Process data</h3>
 <div class="formblock">
 <input type="submit" class="button" value="Store data" onClick="procForm(this.form); window.scrollTo(0, 0);">
@@ -157,6 +170,7 @@
 <div><input type="submit" class="button" value="Show raw data" onClick="displayJSON();"></div>
 <div><input type="submit" class="button" value="Clear local storage" onClick="uiResetLocalStorage();"></div>
 </div>
+</fieldset>
 </div>
 
 </div>
