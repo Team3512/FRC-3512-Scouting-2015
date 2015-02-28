@@ -16,6 +16,7 @@ import "encoding/csv"
 
 type ReceiveMessageHandle struct {
   //database *sql.DB;
+  columns []string;
 };
 
 func valueToString(in interface{}) string {
@@ -115,7 +116,7 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
   s := buf.String();
   records, ok := decodeData(s);
   if(ok) {
-    writeCsvRecords(file, []string{"timestamp", "f_teamNumber"}, records);
+    writeCsvRecords(file, wh.columns, records);
     fmt.Fprintln(wr, "OK");
     return;
   }
@@ -141,7 +142,16 @@ func main() {
   //}
   //defer db.Close();
 
+  columns := []string{"timestamp", "f_matchNumber", "f_teamNumber", "f_numAutoZone", "f_numStageBin", "f_numStepBin", "f_robotAuton", "f_toteAuton", "f_numOnStep", "f_numOnTop", "f_fouls", "f_stacks", "f_dead", "f_tipped", "f_tippedOtherRobot", "f_morePlayerStation", "f_notes"}
+
+  for i := 1; i < 5; i++ {
+    columns = append(columns, "f_" + strconv.Itoa(i) + "_litter");
+    columns = append(columns, "f_" + strconv.Itoa(i) + "_can");
+    columns = append(columns, "f_" + strconv.Itoa(i) + "_ntotes");
+  }
+
   msgHandle := new(ReceiveMessageHandle);
+  msgHandle.columns = columns;
   //msgHandle.database = db;
 
   /* Initialize the HTTP server */
