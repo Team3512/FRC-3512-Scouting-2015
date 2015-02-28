@@ -2,72 +2,88 @@
 <html manifest="/res/appcache.manifest">
 <head>
 <title>FRC 3512 Spartatroniks Scouting Form</title>
-<script src="res/scouting.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/res/scouting.css">
+<script src="/res/scouting.js" type="text/javascript"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 </head>
+
 <body onload="onLoad()">
 
 <h2>FRC 3512 Spartatroniks Scouting Form</h2>
 <div>Team 3512 Scouting System, v0.1 (2015/02/25)</div>
 <div id="statusText"><br></div>
 
-<!-- -->
+<div id="columnContainer">
+
+<div class="atomic">
 <h3>Match Information</h3>
-<div>
-Match #<br>
-<input type="text" name="f_matchNumber" inputmode="numeric">
-<br><br>
-Team #<br>
-<input type="text" name="f_teamNumber" inputmode="numeric">
+<p>
+<div>Match #</div>
+<input type="number" name="f_matchNumber">
+</p>
+<p>
+<div>Team #</div>
+<input type="number" name="f_teamNumber">
+</p>
 </div>
 
+<div class="atomic">
 <h3>Autonomous</h3>
-<div>
-<p># of Yellow Totes in Auto Zone</p>
+<p>
+<div># of Yellow Totes in Auto Zone</div>
 <input type="radio" name="f_numAutoZone" value="0">0
 <input type="radio" name="f_numAutoZone" value="1">1
 <input type="radio" name="f_numAutoZone" value="2">2
 <input type="radio" name="f_numAutoZone" value="3">3
 <input type="radio" name="f_numAutoZone" value="4">4
+</p>
 
-<p># of Bins moved from Staging Area</p>
+<p>
+<div># of Bins moved from Staging Area</div>
 <input type="radio" name="f_numStageBin" value="0">0
 <input type="radio" name="f_numStageBin" value="1">1
 <input type="radio" name="f_numStageBin" value="2">2
 <input type="radio" name="f_numStageBin" value="3">3
 <input type="radio" name="f_numStageBin" value="4">4
+</p>
 
-<p># of Bins moved from Step</p>
+<p>
+<div># of Bins moved from Step</div>
 <input type="radio" name="f_numStepBin" value="0">0
 <input type="radio" name="f_numStepBin" value="1">1
 <input type="radio" name="f_numStepBin" value="2">2
 <input type="radio" name="f_numStepBin" value="3">3
 <input type="radio" name="f_numStepBin" value="4">4
-<br><br>
+</p>
 
-<input type="checkbox" name="f_robotAuton">Robot Fully in Auto Zone
-<br>
-<input type="checkbox" name="f_toteAuton">Stacked Tote Set fully in Auto Zone
+<p>
+<div><input type="checkbox" name="f_robotAuton">Robot Fully in Auto Zone</div>
+<div><input type="checkbox" name="f_toteAuton">Stacked Tote Set fully in Auto Zone</div>
+</p>
 </div>
 
+<div class="atomic">
 <h3>Teleop - Coopertition</h3>
-<div>
-<p># of Totes placed on Step</p>
+<p>
+<div># of Totes placed on Step</div>
 <input type="radio" name="f_numOnStep" value="0">0
 <input type="radio" name="f_numOnStep" value="1">1
 <input type="radio" name="f_numOnStep" value="2">2
 <input type="radio" name="f_numOnStep" value="3">3
+</p>
 
-<p>Stacked on top of how many Totes</p>
+<p>
+<div>Stacked on top of how many Totes</div>
 <input type="radio" name="f_numOnTop" value="0">0
 <input type="radio" name="f_numOnTop" value="1">1
 <input type="radio" name="f_numOnTop" value="2">2
 <input type="radio" name="f_numOnTop" value="3">3
+</p>
 </div>
 
+<div class="atomic">
 <h3>Teleop - Stacked Grey Tote Sets</h3>
-<div>
-<table>
+<table cellpadding="2">
 <tr><td></td><td>1st</td><td>2nd</td><td>3rd</td><td>4th</td><td>5th</td></tr>
 <tr><td>Litter</td><td><input type="checkbox" name="f_1_litter"></td><td><input type="checkbox" name="f_2_litter"></td><td><input type="checkbox" name="f_3_litter"></td><td><input type="checkbox" name="f_4_litter"></td><td><input type="checkbox" name="f_5_litter"></td></tr>
 <tr><td>Can</td><td><input type="checkbox" name="f_1_can"></td><td><input type="checkbox" name="f_2_can"></td><td><input type="checkbox" name="f_3_can"></td><td><input type="checkbox" name="f_4_can"></td><td><input type="checkbox" name="f_5_can"></td></tr>
@@ -81,55 +97,66 @@ Team #<br>
 </table>
 </div>
 
+<div class="atomic">
 <h3>Teleop - Miscellaneous</h3>
-<div>
-<p># of Fouls</p>
+<p>
+<div># of Fouls</div>
 <input type="radio" name="f_fouls" value="0">0
 <input type="radio" name="f_fouls" value="1">1
 <input type="radio" name="f_fouls" value="2">2
 <input type="radio" name="f_fouls" value="3">3
 <input type="radio" name="f_fouls" value="4">4 
+</p>
 
-<p># of Stacks tipped over</p>
+<p>
+<div># of Stacks tipped over</div>
 <input type="radio" name="f_stacks" value="0">0
 <input type="radio" name="f_stacks" value="1">1
 <input type="radio" name="f_stacks" value="2">2
 <input type="radio" name="f_stacks" value="3">3
 <input type="radio" name="f_stacks" value="4">4 
-<br><br>
+</p>
 
-<input type="checkbox" name="f_dead">Dead/Disabled
-<br>
-<input type="checkbox" name="f_tipped">Robot tipped over
-<br>
-<input type="checkbox" name="f_tippedOtherRobot">Tipped other robot over
-<br><br>
-<input type="radio" name="f_morePlayerStation" value="true">Collected more from Human Player Station
-<br>
-<input type="radio" name="f_morePlayerStation" value="false">Collected more from Landfill
+<p>
+<div><input type="checkbox" name="f_dead">Dead/Disabled</div>
+<div><input type="checkbox" name="f_tipped">Robot tipped over</div>
+<div><input type="checkbox" name="f_tippedOtherRobot">Tipped other robot over</div>
+</p>
+
+<p>
+<div><input type="radio" name="f_morePlayerStation" value="true">Collected more from Human Player Station</div>
+<div><input type="radio" name="f_morePlayerStation" value="false">Collected more from Landfill</div>
+</p>
 </div>
 
-<p>Notes</p>
+<div class="atomic">
+<h3>Other</h3>
+<p>
+<div>Notes</div>
 <textarea name="f_notes" rows="4" cols="30"></textarea>
-<br> 
-<p>Scouted By</p>
+</p>
+<p>
+<div>Scouted By</div>
 <input type="text" name="f_scoutName">
+</p>
+</div>
 
-<br>
-
-<!-- -->
-
-<br>
+<div class="atomic">
+<h3>Process data</h3>
+<p>
 <input type="submit" value="Store data" onClick="procForm(this.form); window.scrollTo(0, 0);">
 <input type="submit" value="Clear fields" onClick="uiClearFields();">
-<br>
-<br>
-<h3>Process data</h3>
-<input type="submit" value="Show data (debug)" onClick="displayJSON();">
-<br>
-<input type="submit" value="Clear (local) data" onClick="uiResetLocalStorage();">
-<br>
+</p>
+<p>
 <input type="submit" value="Send data to remote host" onClick="uiSendData();">
-<br>
+</p>
+<p>
+<div><input type="submit" value="Show data (debug)" onClick="displayJSON();"></div>
+<div><input type="submit" value="Clear (local) data" onClick="uiResetLocalStorage();"></div>
+</p>
+</div>
+
+</div>
+
 </body>
 </html>
