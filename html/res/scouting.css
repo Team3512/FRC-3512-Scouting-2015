@@ -4,16 +4,21 @@
     -moz-column-width: 16em;
 }
 
+#statusText {
+    background-color: #f5f5f5;
+}
+
 td {
     padding: 2px 2px;
 }
 
 .atomic {
-    column-break-inside: avoid;
+    break-inside: avoid;
     -webkit-column-break-inside: avoid;
     -moz-column-break-inside: avoid;
+    -ms-column-break-inside: avoid;
+    -o-column-break-inside: avoid;
     page-break-inside: avoid;
-    break-inside: avoid;
 }
 
 .formblock {
