@@ -156,5 +156,7 @@ function displayJSON() {
 }
 
 function onLoad() {
+    var localtime = new Date(document.lastModified);
+    document.getElementById('dateChanged').innerHTML = localtime.toISOString();
     clearFields();
 }

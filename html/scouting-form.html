@@ -12,11 +12,10 @@
 <body onload="onLoad()">
 
 <h2>FRC 3512 Spartatroniks Scouting Form</h2>
-<div>Team 3512 Scouting System, v0.1 (<script src="/res/modify.js"></script>)</div>
+<div>Team 3512 Scouting System, v0.1 (<span id="dateChanged"></span>)</div>
 <div id="statusText"><br></div>
 
 <div id="columnContainer">
-
 <div class="atomic">
 <fieldset>
 <h3>Match Information</h3>
@@ -159,17 +158,24 @@
 <div class="atomic">
 <fieldset>
 <h3>Process data</h3>
-<div class="formblock">
+
+<div class="padblock">
 <input type="submit" class="button" value="Store data" onClick="procForm(this.form); window.scrollTo(0, 0);">
 <input type="submit" class="button" value="Clear fields" onClick="uiClearFields();">
 </div>
-<div class="formblock">
+
+<div class="padblock">
 <input type="submit" class="button" value="Send data to remote host" onClick="uiSendData();">
 </div>
-<div class="formblock">
-<div><input type="submit" class="button" value="Show raw data" onClick="displayJSON();"></div>
-<div><input type="submit" class="button" value="Clear local storage" onClick="uiResetLocalStorage();"></div>
+
+<div class="padblock">
+<input type="submit" class="button" value="Show raw data" onClick="displayJSON();">
 </div>
+
+<div class="padblock">
+<input type="submit" class="button" value="Clear local storage" onClick="uiResetLocalStorage();">
+</div>
+
 </fieldset>
 </div>
 

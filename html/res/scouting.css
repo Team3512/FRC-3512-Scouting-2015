@@ -2,6 +2,7 @@
     column-width: 20em;
     -webkit-column-width: 20em;
     -moz-column-width: 20em;
+    padding-top: 0.25em;
 }
 
 #statusText {
@@ -28,6 +29,28 @@ td {
 /* input[type=text]:not(old) { */
 .button {
     background-color: #f8f8f8;
-    border: 2px solid #cccccc;
+    border: 2px solid #f5f5f5;
+}
+
+.padblock {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+}
+
+fieldset { 
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    margin-bottom: 0.5em;
+
+    border: 1px solid;
+    border-color: #f5f5f5;
+    padding-bottom: 0.25em;
 }
 
