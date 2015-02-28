@@ -6,7 +6,7 @@
 }
 
 #statusText {
-    background-color: #f5f5f5;
+    background-color: #f0f0f0;
 }
 
 td {
@@ -28,8 +28,8 @@ td {
 
 /* input[type=text]:not(old) { */
 .button {
-    background-color: #f8f8f8;
-    border: 2px solid #f5f5f5;
+    background-color: #f5f5f5; /* TODO: change this */
+    border: 2px solid #f0f0f0;
 }
 
 .padblock {
@@ -49,8 +49,8 @@ fieldset {
     padding-right: 0.75em;
     margin-bottom: 0.5em;
 
-    border: 1px solid;
-    border-color: #f5f5f5;
+    border: 2px solid;
+    border-color: #f0f0f0;
     padding-bottom: 0.25em;
 }
 
