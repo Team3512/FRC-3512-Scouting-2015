@@ -160,3 +160,18 @@ function onLoad() {
     document.getElementById('dateChanged').innerHTML = localtime.toISOString();
     clearFields();
 }
+
+/* function uiReloadAppcache() {
+    var appCache = window.applicationCache;
+
+    appCache.addEventListener('updateready', function(e) {
+        if (appCache.status == window.applicationCache.UPDATEREADY) {
+            appCache.swapCache(); //replaces the old cache with the new one.
+            window.location.reload();
+        }
+    })
+
+    document.getElementById('statusText').innerHTML = "Reloading appcache..";
+    appCache.update(); //this will attempt to update the users cache and changes the application cache status to 'UPDATEREADY'.
+} */
+
