@@ -143,7 +143,7 @@ function submitData(str) {
             }
         }
     }
-    xmlhttp.open("POST", "/write", true);
+    xmlhttp.open("POST", getSubmitURL(), true);
     xmlhttp.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
     xmlhttp.send(str);
 }
@@ -159,6 +159,22 @@ function onLoad() {
     var localtime = new Date(document.lastModified);
     document.getElementById('dateChanged').innerHTML = localtime.toISOString();
     clearFields();
+}
+
+function getSubmitURL() {
+    var remoteHost = localStorage.getItem('remoteHost3512');
+    if(remoteHost == '' || remoteHost == null) {
+        remoteHost = "/write";
+    }
+
+    return remoteHost;
+}
+
+function uiSetRemoteHost() {
+    var remoteHost = getSubmitURL();
+
+    remoteHost = prompt('Enter the URL to POST data to', remoteHost);
+    localStorage.setItem('remoteHost3512', remoteHost);
 }
 
 /* function uiReloadAppcache() {
