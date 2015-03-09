@@ -190,7 +190,7 @@ func main() {
   //d.RegisterExpr("^/$", http.HandlerFunc(mainHandle));
   d.RegisterExpr("^/form$", http.HandlerFunc(formHandle));
   d.RegisterExpr("^/output.csv$", http.HandlerFunc(csvHandle));
-  d.RegisterExpr("^/write", http.StripPrefix("/", msgHandle));
+  d.RegisterExpr("^/write$", http.StripPrefix("/", msgHandle));
   d.RegisterExpr("^/res", http.StripPrefix("/res/", http.FileServer(http.Dir("html/res/"))));
 
   log.Fatal(http.ListenAndServe("127.0.0.1:8085", d))
