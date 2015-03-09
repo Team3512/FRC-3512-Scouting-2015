@@ -106,8 +106,10 @@ func (wh ReceiveMessageHandle) ServeHTTP(wr http.ResponseWriter, req *http.Reque
   to = req.FormValue("to");
   timestamp = time.Now(); */
 
+  //wr.Header().Add("Content-Type", "text/html");
+  /* wr.Header().Add("Access-Control-Allow-Origin", "http://scoutdb.frc3512.com");
+  wr.Header().Add("Access-Control-Allow-Headers", "Content-Type"); */
   wr.WriteHeader(200);
-  wr.Header().Add("Content-Type", "text/html");
 
   buf := new(bytes.Buffer);
   buf.ReadFrom(req.Body);
