@@ -14,6 +14,8 @@ import "io"
 import "os"
 import "encoding/csv"
 
+var g_version string;
+
 type ReceiveMessageHandle struct {
   //database *sql.DB;
   columns []string;
@@ -150,6 +152,8 @@ func main() {
   //  log.Fatal(err);
   //}
   //defer db.Close();
+
+  fmt.Println("Version: " + g_version);
 
   // Open the file
   file, err := os.OpenFile("output.csv", os.O_RDWR | os.O_APPEND, 0660);
