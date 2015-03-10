@@ -9,6 +9,10 @@
     background-color: #f0f0f0;
 }
 
+#showContent {
+    display: none;
+}
+
 td {
     padding: 2px 2px;
 }
@@ -53,4 +57,6 @@ fieldset {
     border-color: #f0f0f0;
     padding-bottom: 0.25em;
 }
+
+a { cursor: pointer; color: blue; }
 

@@ -176,6 +176,16 @@ function uiSetRemoteHost() {
     localStorage.setItem('remoteHost3512', remoteHost);
 }
 
+function uiFlipFlopDisplay() {
+    if(document.getElementById('showContent').style.display != 'block') {
+        document.getElementById('showLabel').innerHTML = 'Show less';
+        document.getElementById('showContent').style.display = 'block';
+    } else {
+        document.getElementById('showLabel').innerHTML = 'Show more';
+        document.getElementById('showContent').style.display = 'none';
+    }
+}
+
 /* function uiReloadAppcache() {
     var appCache = window.applicationCache;
 
