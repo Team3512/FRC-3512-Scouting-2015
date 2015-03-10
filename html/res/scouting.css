@@ -13,6 +13,10 @@
     display: none;
 }
 
+#versionString {
+    font-style: italic;
+}
+
 td {
     padding: 2px 2px;
 }
