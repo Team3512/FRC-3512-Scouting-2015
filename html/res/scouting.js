@@ -156,8 +156,7 @@ function displayJSON() {
 }
 
 function onLoad() {
-    var localtime = new Date(document.lastModified);
-    document.getElementById('dateChanged').innerHTML = localtime.toISOString();
+    document.getElementById('versionString').innerHTML = g_versionString;
     clearFields();
 }
 

@@ -139,6 +139,13 @@ func formHandle(wr http.ResponseWriter, req *http.Request) {
     http.ServeFile(wr, req, "html/scouting-form.html");
 }
 
+func versionHandle(wr http.ResponseWriter, req *http.Request) {
+    wr.Header().Add("Content-Type", "text/javascript");
+    wr.WriteHeader(200);
+
+    fmt.Fprintln(wr, "var g_versionString = '" + g_version + "';");
+}
+
 func csvHandle(wr http.ResponseWriter, req *http.Request) {
     http.ServeFile(wr, req, "output.csv");
 }
@@ -195,6 +202,7 @@ func main() {
   d = dispatcher.NewDispatcher();
   //d.RegisterExpr("^/$", http.HandlerFunc(mainHandle));
   d.RegisterExpr("^/form$", http.HandlerFunc(formHandle));
+  d.RegisterExpr("^/version.js$", http.HandlerFunc(versionHandle));
   d.RegisterExpr("^/output.csv$", http.HandlerFunc(csvHandle));
   d.RegisterExpr("^/write$", http.StripPrefix("/", msgHandle));
   d.RegisterExpr("^/res", http.StripPrefix("/res/", http.FileServer(http.Dir("html/res/"))));
