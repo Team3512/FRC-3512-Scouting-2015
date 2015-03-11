@@ -150,6 +150,10 @@ func csvHandle(wr http.ResponseWriter, req *http.Request) {
     http.ServeFile(wr, req, "output.csv");
 }
 
+func mainHandle(wr http.ResponseWriter, req *http.Request) {
+    http.ServeFile(wr, req, "html/index.html");
+}
+
 func main() {
   var d *dispatcher.Dispatcher;
 
@@ -200,7 +204,7 @@ func main() {
 
   /* Initialize the HTTP server */
   d = dispatcher.NewDispatcher();
-  //d.RegisterExpr("^/$", http.HandlerFunc(mainHandle));
+  d.RegisterExpr("^/$", http.HandlerFunc(mainHandle));
   d.RegisterExpr("^/form$", http.HandlerFunc(formHandle));
   d.RegisterExpr("^/version.js$", http.HandlerFunc(versionHandle));
   d.RegisterExpr("^/output.csv$", http.HandlerFunc(csvHandle));
