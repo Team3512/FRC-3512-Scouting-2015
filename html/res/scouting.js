@@ -173,7 +173,9 @@ function uiSetRemoteHost() {
     var remoteHost = getSubmitURL();
 
     remoteHost = prompt('Enter the URL to POST data to', remoteHost);
-    localStorage.setItem('remoteHost3512', remoteHost);
+    if(remoteHost != null) {
+        localStorage.setItem('remoteHost3512', remoteHost);
+    }
 }
 
 function uiFlipFlopDisplay() {
