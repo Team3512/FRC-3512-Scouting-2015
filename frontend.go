@@ -10,7 +10,6 @@ import "fmt"
 import "bytes"
 import "encoding/json"
 import "strconv"
-import "io"
 import "os"
 import "encoding/csv"
 
@@ -76,7 +75,7 @@ func decodeData(jsontext string) (out []map[string]string, ok bool){
     return out, true;
 }
 
-func writeCsvRecords(wr io.Writer, columns []string, records []map[string]string) (ok bool) {
+func writeCsvRecords(wr *os.File, columns []string, records []map[string]string) (ok bool) {
     csvwrite := csv.NewWriter(wr);
 
     // Loop over the records
