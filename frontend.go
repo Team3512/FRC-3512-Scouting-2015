@@ -45,7 +45,6 @@ func valueToString(in interface{}) string {
 
 func decodeData(jsontext string) (out []map[string]string, ok bool){
     var strarr []interface{};
-    outmap := make(map[string]string);
 
     err := json.Unmarshal(bytes.NewBufferString(jsontext).Bytes(), &strarr);
     if err != nil {
@@ -58,6 +57,7 @@ func decodeData(jsontext string) (out []map[string]string, ok bool){
 
 
         for i := 1; i < len(strarr); i++ {
+            outmap := make(map[string]string);
             m, isok := strarr[i].(map[string]interface{});
             if(!isok) {
                 // All of these should work
