@@ -210,5 +210,5 @@ func main() {
   d.RegisterExpr("^/write$", http.StripPrefix("/", msgHandle));
   d.RegisterExpr("^/res", http.StripPrefix("/res/", http.FileServer(http.Dir("html/res/"))));
 
-  log.Fatal(http.ListenAndServe("127.0.0.1:8085", d))
+  log.Fatal(http.ListenAndServe("127.0.0.1:8088", d))
 }
