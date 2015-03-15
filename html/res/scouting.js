@@ -1,5 +1,13 @@
 var fieldNames = {'f_matchNumber':'', 'f_teamNumber':'', 'f_numAutoZone':'0', 'f_numStageBin':'0', 'f_numStepBin':'0', 'f_robotAuton':'', 'f_toteAuton':'', 'f_numOnStep':'0', 'f_numOnTop':'0', 'f_fouls':'0', 'f_stacks':'0', 'f_dead':'', 'f_tipped':'', 'f_tippedOtherRobot':'', 'f_morePlayerStation':'true', 'f_notes':''};
 
+function supports_html5_storage() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
 function marshalData() {
     var map = {};
 
@@ -109,22 +117,42 @@ function getLocalStorageArr() {
 }
 
 function procForm() {
+    if(supports_html5_storage() == false) {
+        document.getElementById('statusText').innerHTML = "Your browser is not supported!";
+        return;
+    }
+
     var arr;
     arr = getLocalStorageArr();
 
     data = marshalData();
     arr.push(data);
-    localStorage.setItem("scoutingData3512", JSON.stringify(arr));
+    try {
+        localStorage.setItem("scoutingData3512", JSON.stringify(arr));
+    } catch (error) {
+        document.getElementById('statusText').innerHTML = "Storing data failed!";
+        return false;
+    }
     clearFields();
 
     document.getElementById('statusText').innerHTML = "Data recorded";
 }
 
 function resetLocalStorage() {
+    if(supports_html5_storage() == false) {
+        document.getElementById('statusText').innerHTML = "Your browser is not supported!";
+        return;
+    }
+
     localStorage.setItem("scoutingData3512", "");
 }
 
 function uiSendData() {
+    if(supports_html5_storage() == false) {
+        document.getElementById('statusText').innerHTML = "Your browser is not supported!";
+        return;
+    }
+
     submitData(JSON.stringify(getLocalStorageArr()));
     window.scrollTo(0, 0);
 }
@@ -157,6 +185,9 @@ function displayJSON() {
 
 function onLoad() {
     document.getElementById('versionString').innerHTML = g_versionString;
+    if(supports_html5_storage() == false) {
+        alert("WARNING!\nYour platform is not supported. This application will not work.");
+    }
     clearFields();
 }
 
