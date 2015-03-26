@@ -51,7 +51,7 @@ func decodeData(jsontext string) (out []map[string]string, ok bool){
         return nil, false;
 	}
 
-    if(strarr[0] == "magic v0.1") {
+    if(strarr[0] == "magic v0.2") {
         //var record []string;
 
 

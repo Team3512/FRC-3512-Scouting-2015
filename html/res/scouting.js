@@ -103,14 +103,14 @@ function getLocalStorageArr() {
     try {
         arr = JSON.parse(localStorage.getItem("scoutingData3512"));
     }catch(e){
-        arr = ["magic v0.1"];
+        arr = ["magic v0.2"];
     }
     if(Array.isArray(arr)) {
-        if(arr[0] !== "magic v0.1") {
-            arr = ["magic v0.1"];
+        if(arr[0] !== "magic v0.2") {
+            arr = ["magic v0.2"];
         }
     }else{
-        arr = ["magic v0.1"];
+        arr = ["magic v0.2"];
     }
 
     return arr;
