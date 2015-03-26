@@ -35,7 +35,7 @@
 <fieldset>
 <h3>Autonomous</h3>
 <div class="formblock">
-<div># of Yellow Totes in Auto Zone</div>
+<div># of Yellow Totes Moved from Staging Area into Auto Zone</div>
 <input type="radio" name="f_numAutoZone" value="0">0
 <input type="radio" name="f_numAutoZone" value="1">1
 <input type="radio" name="f_numAutoZone" value="2">2
@@ -43,7 +43,7 @@
 </div>
 
 <div class="formblock">
-<div># of Bins moved from Staging Area</div>
+<div># of Bins moved from Staging Area into Auto Zone</div>
 <input type="radio" name="f_numStageBin" value="0">0
 <input type="radio" name="f_numStageBin" value="1">1
 <input type="radio" name="f_numStageBin" value="2">2
@@ -60,8 +60,8 @@
 </div>
 
 <div class="formblock">
-<div><input type="checkbox" name="f_robotAuton">Robot Fully in Auto Zone</div>
-<div><input type="checkbox" name="f_toteAuton">Stacked Tote Set</div>
+<div><input type="checkbox" name="f_robotAuton">Robot fully in Auto Zone</div>
+<div><input type="checkbox" name="f_toteAuton">Robot completed Stacked Tote Set</div>
 </div>
 </fieldset>
 </div>
@@ -70,20 +70,13 @@
 <fieldset>
 <h3>Teleop - Coopertition</h3>
 <div class="formblock">
-<div># of Totes placed on Step</div>
+<div># of Totes Robot placed on Step</div>
 <input type="radio" name="f_numOnStep" value="0">0
 <input type="radio" name="f_numOnStep" value="1">1
 <input type="radio" name="f_numOnStep" value="2">2
 <input type="radio" name="f_numOnStep" value="3">3
 </div>
 
-<div class="formblock">
-<div>Stacked on top of how many Totes</div>
-<input type="radio" name="f_numOnTop" value="0">0
-<input type="radio" name="f_numOnTop" value="1">1
-<input type="radio" name="f_numOnTop" value="2">2
-<input type="radio" name="f_numOnTop" value="3">3
-</div>
 </fieldset>
 </div>
 
@@ -127,9 +120,11 @@
 </div>
 
 <div class="formblock">
-<div><input type="checkbox" class="checkbox" name="f_dead">Dead/Disabled</div>
+<div><input type="checkbox" class="checkbox" name="f_dead">Dead</div>
+<div><input type="checkbox" class="checkbox" name="f_disabled">Disabled</div>
 <div><input type="checkbox" name="f_tipped">Robot tipped over</div>
 <div><input type="checkbox" name="f_tippedOtherRobot">Tipped other robot over</div>
+<div><input type="checkbox" name="f_ramp">Robot has tethered feeder station ramp</div>
 </div>
 
 <div class="formblock">
